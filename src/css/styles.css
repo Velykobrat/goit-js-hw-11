@@ -1,0 +1,15 @@
+
+.loader {
+  border: 16px solid #f3f3f3; /* Ширина і колір обводки */
+  border-top: 16px solid #3498db; /* Ширина і колір верхньої обводки */
+  border-radius: 50%; /* Круглий вигляд */
+  width: 120px; /* Ширина та висота */
+  height: 120px;
+  animation: spin 2s linear infinite; /* Анімація обертання */
+  margin: auto; /* Центрування */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
