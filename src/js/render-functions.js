@@ -8,7 +8,6 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
 // Функція для створення розмітки галереї
 export function renderImages(images) {
     const gallery = document.getElementById('gallery');
@@ -22,12 +21,14 @@ export function renderImages(images) {
     images.forEach(image => {
         const cardHTML = `
       <div class="card">
-        <img src="${image.webformatURL}" alt="${image.tags}">
+        <a href="${image.largeImageURL}" data-lightbox="image">
+          <img src="${image.webformatURL}" alt="${image.tags}">
+        </a>
         <div class="info">
-          <p>Likes: ${image.likes}</p>
-          <p>Views: ${image.views}</p>
-          <p>Comments: ${image.comments}</p>
-          <p>Downloads: ${image.downloads}</p>
+          <p><strong>Likes</strong> <br>${image.likes}</p>
+          <p><strong>Views</strong> <br>${image.views}</p>
+          <p><strong>Comments</strong> <br>${image.comments}</p>
+          <p><strong>Downloads</strong> <br>${image.downloads}</p>
         </div>
       </div>
     `;
@@ -37,10 +38,9 @@ export function renderImages(images) {
   });
        
     // Після додавання нових елементів до галереї, викликаємо метод refresh
-    const lightbox = new SimpleLightbox('#gallery a');
+    const lightbox = new SimpleLightbox('#gallery a', {});
     lightbox.refresh();
   }
-  
 
 // Допоміжна функція для відображення повідомлення про помилку
 function showErrorMessage() {
@@ -49,7 +49,3 @@ function showErrorMessage() {
     message: 'Sorry, there are no images matching your search query. Please try again!',
   });
 }
-
-
-
-  
